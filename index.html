@@ -4,110 +4,94 @@
 <meta charset="UTF-8">
 <title>For My Meri Jan ❤️</title>
 
-<!-- Styles -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:"Times New Roman",serif;
   background:linear-gradient(135deg,#fde2e4,#fad2e1,#ffd6e0,#ffe6eb);
   min-height:100vh;
-  display:flex;justify-content:center;align-items:center;
-  color:#4b154b;text-align:center;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;color:#4b154b;
   overflow:hidden;
-  animation:bgShift 22s infinite alternate;
+  animation:bgShift 20s infinite alternate;
 }
-@keyframes bgShift{0%{background-position:0 50%;}100%{background-position:100% 50%;}}
-.scene{display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
-.active{display:flex;animation:fadeIn 1s forwards;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
+@keyframes bgShift{0%{background-position:0 0;}100%{background-position:100% 100%;}}
 
-/* Headlines + Buttons */
-h1{font-size:2.6rem;margin-bottom:20px;color:#7a1b5a;}
-h2{color:#7a1b5a;margin-bottom:15px;font-size:1.8rem;}
-p{max-width:680px;font-size:1.1rem;margin-bottom:15px;}
+h1,h2{color:#7a1b5a;margin-bottom:20px;}
+p{font-size:1.1rem;max-width:680px;}
 button{
-  padding:12px 32px;margin:6px;border:none;border-radius:40px;
-  background:#7a1b5a;color:#fff;font-size:1rem;cursor:pointer;
-  transition:.3s;box-shadow:0 4px 15px rgba(124,20,60,0.35);
+  margin:8px;padding:12px 32px;
+  background:#7a1b5a;color:#fff;border:none;border-radius:40px;
+  cursor:pointer;transition:.3s;font-size:1rem;
+  box-shadow:0 4px 15px rgba(124,20,60,0.35);
 }
 button:hover{background:#962463;transform:scale(1.08);}
-.arrow{color:#7a1b5a;animation:blink 1s infinite;}
-@keyframes blink{50%{opacity:0;}}
+.scene{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;}
+.active{display:flex;animation:fadeIn 1s forwards;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-/* ------- Gift Boxes ------- */
+/* --- Gift Boxes --- */
 .gift-boxes{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;}
 .box{
-  width:170px;height:170px;
+  width:170px;height:170px;border-radius:25px;
   background:linear-gradient(145deg,#fff,#f7d7e4);
-  border:3px solid #dfa1b5;
-  border-radius:25px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  border:3px solid #dfa1b5;box-shadow:0 10px 25px rgba(0,0,0,0.1);
   display:flex;flex-direction:column;justify-content:center;align-items:center;
-  cursor:pointer;
-  transition:.4s;
+  cursor:pointer;transition:.4s;
 }
 .box:hover{transform:scale(1.07);}
-.box span{font-size:1.4rem;color:#7a1b5a;margin-top:8px;font-weight:bold;}
+.box span{font-size:1.4rem;color:#7a1b5a;font-weight:bold;}
 
-/* ------- GIFT 2 - ENVELOPE + LETTER ------- */
+/* --- Gift 2 Letter --- */
 .envelope{
   width:280px;height:180px;background:#fbe4ea;border:2px solid #dfa1b5;
-  border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.15);
-  position:relative;overflow:hidden;
-  transition:transform 1.4s ease,bottom 1.4s ease;
+  border-radius:10px;position:relative;overflow:hidden;
+  transition:transform 1.3s ease;box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 .envelope::before{
   content:"";position:absolute;width:100%;height:100%;
   background:#f3cbd7;
   clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%);
-  transition:transform 1.2s ease;transform-origin:top;
+  transition:transform 1s ease;transform-origin:top;
 }
 .envelope.open::before{transform:rotateX(180deg);}
 .envelope.moveUp{transform:translateY(-120px);}
 .letter-paper{
-  opacity:0;background:#fff;border:1.5px solid #dfa1b5;border-radius:10px;
-  margin-top:18px;width:340px;max-width:90vw;padding:30px 25px;
-  text-align:left;line-height:1.8;
-  box-shadow:0 6px 18px rgba(0,0,0,0.12);
-  transform:translateY(25px);
-  transition:all 1s ease-in-out;
+  opacity:0;background:white;border:1.5px solid #dfa1b5;border-radius:10px;
+  margin-top:25px;width:340px;max-width:90vw;padding:25px;text-align:left;
+  line-height:1.6;box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  transform:translateY(25px);transition:all 1s ease;
 }
 .letter-paper.show{opacity:1;transform:translateY(0);}
-.letter-text{overflow:hidden;border-right:2px solid #7a1b5a;white-space:nowrap;width:0;}
-.typed{animation:typing 6s steps(80,end) forwards,blink 1s infinite;}
-@keyframes typing{from{width:0;}to{width:100%;}}
-@keyframes blink{50%{border-color:transparent;}}
+.line{opacity:0;overflow:hidden;white-space:normal;}
 
-/* ------- GIFT 3 - NOTEBOOK ------- */
+/* --- Gift 3 Notebook --- */
 .notebook{
   width:320px;height:230px;background:#f6d0df;border:3px solid #ce9fb3;
-  border-radius:10px;position:relative;
-  box-shadow:0 8px 25px rgba(0,0,0,0.15);
-  overflow:hidden;perspective:1200px;
-  transition:transform 1s ease-in-out,margin-top 1s ease;
+  border-radius:10px;position:relative;box-shadow:0 8px 25px rgba(0,0,0,.15);
+  perspective:1200px;transition:transform 1s ease-in-out,margin-top 1s ease;
 }
 .notebook::before{
-  content:"";position:absolute;left:-6px;top:0;width:6px;height:100%;
+  content:'';position:absolute;left:-6px;top:0;width:6px;height:100%;
   background:#b77f9b;border-right:1px solid #a26689;border-radius:6px 0 0 6px;
 }
 .cover{
-  position:absolute;top:0;left:0;width:100%;height:100%;
-  background:#e8bccd;border-radius:10px;
-  transform-origin:left;transform:rotateY(0deg);
+  position:absolute;top:0;left:0;width:100%;height:100%;background:#e8bccd;
+  border-radius:10px;transform-origin:left;transform:rotateY(0deg);
   transition:transform 1s ease-in-out;
 }
 .page{
   position:absolute;top:0;left:0;width:100%;height:100%;
-  background:#fffdfd;border-radius:7px;
+  background:#fff;border-radius:7px;
   box-shadow:inset 0 0 10px rgba(0,0,0,0.1);
-  padding:25px;line-height:1.8;text-align:left;overflow:auto;
-  opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease;
+  padding:25px;line-height:1.6;text-align:left;overflow:auto;
+  opacity:0;transform:translateY(25px);
+  transition:opacity 1s ease,transform 1s ease;
 }
 .notebook.open{margin-top:-40px;}
 .notebook.open .cover{transform:rotateY(-140deg);}
 .notebook.open .page{opacity:1;transform:translateY(0);}
-.page p{overflow:hidden;border-right:2px solid #7a1b5a;white-space:nowrap;width:0;}
-.page .typed{animation:typing 6s steps(80,end) forwards,blink 1s infinite;}
+.page p{opacity:0;white-space:normal;}
 </style>
 </head>
 
@@ -153,25 +137,18 @@ button:hover{background:#962463;transform:scale(1.08);}
   </div>
 </div>
 
-<!-- GIFT 1 Placeholder: -->
-<div id="gift1" class="scene">
-  <h2>Gift 1 coming soon 💫</h2>
-  <button onclick="nextScene(6)">⬅ Back to Gifts</button>
-</div>
-
 <!-- GIFT 2 -->
 <div id="gift2" class="scene">
   <div class="envelope" id="envelope"></div>
   <div id="letter" class="letter-paper">
     <h2>I Love You ❤️</h2>
-    <p class="letter-text" id="letterText">
-      When I say I love you more, I don’t just mean I love you more than you love me. 
-      I mean I love you more than the bad days ahead of us. I love you more than any fight we will ever have. 
-      I love you more than the distance between us. I love you more than any obstacle that could come between us. 
-      Because at the end of the day, you’re the person I want to come home to — 
-      the one I want to share my happiness, sadness and everything with. 
-      My eyes will always adore you. You are my home, my heart, my forever Azu 💞
-    </p>
+    <div id="letterLines">
+      <p class="line">When I say I love you more, I don’t just mean I love you more than you love me.</p>
+      <p class="line">I mean I love you more than the bad days ahead of us, more than any fight we will ever have.</p>
+      <p class="line">I love you more than the distance between us and any obstacle that could ever come between us.</p>
+      <p class="line">Because at the end of the day, you’re the person I want to come home to — the one I want to share my happiness, sadness, and everything with.</p>
+      <p class="line">My eyes will always adore you. You are my home, my heart, my forever Azu 💞</p>
+    </div>
   </div>
   <div>
     <button onclick="openGift(3)">Next Gift ➜</button>
@@ -185,10 +162,9 @@ button:hover{background:#962463;transform:scale(1.08);}
   <div class="notebook" id="notebook">
     <div class="cover"></div>
     <div class="page" id="page">
-      <p id="noteText">
-        I don’t have enough to gift you on this beautiful moment, but I promise I will gift you <b>انشاءاللہ</b>, and you will be happy. 
-        You are my happiness, my peace, and my most precious prayer come true. 🌸
-      </p>
+      <p id="p1">I don’t have enough to gift you on this beautiful moment, but I promise I will gift you <b>انشاءاللہ</b>.</p>
+      <p id="p2">You will be happy, because seeing you smile is the greatest gift I could ever receive.</p>
+      <p id="p3">You’re my happiness, my peace, and my most precious prayer come true. 🌸</p>
     </div>
   </div>
   <div>
@@ -197,74 +173,75 @@ button:hover{background:#962463;transform:scale(1.08);}
   </div>
 </div>
 
-<!-- ---------- JavaScript ---------- -->
 <script>
 const scenes=document.querySelectorAll('.scene');
 function nextScene(n){scenes.forEach(s=>s.classList.remove('active'));document.getElementById('scene'+n).classList.add('active');}
 
-// YES / NO logic
-const yes=document.getElementById('yesBtn'),
-      no=document.getElementById('noBtn'),
-      arrow=document.getElementById('arrow');
-yes.addEventListener('click',()=>nextScene(4));
-no.addEventListener('click',()=>{
+/* YES/NO Logic */
+const yes=document.getElementById('yesBtn'),no=document.getElementById('noBtn'),arrow=document.getElementById('arrow');
+if(yes){yes.addEventListener('click',()=>nextScene(4));}
+if(no){no.addEventListener('click',()=>{
   arrow.style.display='block';
   const x=Math.random()*(window.innerWidth-150);
   const y=Math.random()*(window.innerHeight-150);
-  no.style.position='absolute';
-  no.style.left=x+'px';no.style.top=y+'px';
-});
+  no.style.position='absolute';no.style.left=x+'px';no.style.top=y+'px';
+});}
 
-// GIFT Navigation
+/* Gift Navigation */
 function openGift(n){
   scenes.forEach(s=>s.classList.remove('active'));
   document.getElementById('gift'+n).classList.add('active');
-  if(n===2) startEnvelope();
+  if(n===2) startLetter();
   if(n===3) resetNotebook();
 }
 
-/* ------- Gift 2 Animation ------- */
-function startEnvelope(){
+/* ---------- GIFT 2 LOGIC ---------- */
+function startLetter(){
   const env=document.getElementById('envelope');
   const letter=document.getElementById('letter');
-  const text=document.getElementById('letterText');
-  text.classList.remove('typed');
-  text.style.width='0';
-  env.classList.add('moveUp');
-  setTimeout(()=>env.classList.add('open'),700);
+  const lines=document.querySelectorAll('#letterLines .line');
+  // reset
+  env.classList.remove('open','moveUp');
+  letter.classList.remove('show');
+  lines.forEach(l=>{l.style.opacity=0;});
+  // animation
+  setTimeout(()=>env.classList.add('moveUp'),300);
+  setTimeout(()=>env.classList.add('open'),800);
+  setTimeout(()=>letter.classList.add('show'),2000);
   setTimeout(()=>{
-    letter.classList.add('show');
-    text.classList.add('typed');
-  },2000);
+    // show lines sequentially with delay
+    lines.forEach((l,i)=>{
+      setTimeout(()=>{
+        l.style.opacity=1;
+      },i*1500);
+    });
+  },2300);
 }
 
-/* ------- Gift 3 Animation ------- */
+/* ---------- GIFT 3 LOGIC ---------- */
 const notebook=document.getElementById('notebook');
 const openBtn=document.getElementById('openBtn');
-const noteText=document.getElementById('noteText');
-let openState=false;
-
+const page=document.getElementById('page');
+let opened=false;
 function resetNotebook(){
   notebook.classList.remove('open');
-  noteText.classList.remove('typed');
-  noteText.style.width='0';
-  openState=false;
+  Array.from(page.querySelectorAll('p')).forEach(p=>p.style.opacity=0);
+  opened=false;
 }
+if(openBtn){
 openBtn.addEventListener('click',()=>{
-  if(!openState){
-    openState=true;
+  if(!opened){
+    opened=true;
     notebook.classList.add('open');
-    noteText.classList.remove('typed');
-    noteText.style.width='0';
-    void noteText.offsetWidth;
-    setTimeout(()=>noteText.classList.add('typed'),800);
+    const paras=page.querySelectorAll('p');
+    paras.forEach((p,i)=>{
+      setTimeout(()=>{p.style.opacity=1;},i*1500+800);
+    });
   }else{
-    openState=false;
-    notebook.classList.remove('open');
-    noteText.classList.remove('typed');
-    noteText.style.width='0';
+    resetNotebook();
   }
 });
+}
 </script>
 </body>
 </html>
