@@ -1,577 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For My Azu | Forever Yours</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
-
+  <meta charset="UTF-8">
+  <title>For My Meri Jan ❤️</title>
   <style>
-    :root {
-      --burgundy: #800020;
-      --champagne: #f7e7ce;
-      --off-white: #fff8f0;
-      --blush: #c08081;
-      --text-dark: #2d1a1a;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;700&display=swap');
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background-color: var(--off-white);
-      color: var(--text-dark);
-      font-family: "Inter", sans-serif;
-      overflow-x: hidden;
-      line-height: 1.6;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="%23800020"><path d="M12 21.35l-1.45-13.2C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto;
-    }
-
-    h1, h2, h3, .serif {
-      font-family: "Playfair Display", serif;
-      color: var(--burgundy);
-    }
-
-    /* --- Background Particles --- */
-    #canvas-hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* --- Layout --- */
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* --- Header & Counter --- */
-    header {
-      height: 100vh;
+      background: linear-gradient(135deg, #ffb6c1, #ffe6e6);
       display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .scene {
+      display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      animation: fadeIn 1.5s;
     }
 
-    .hero-title {
-      font-size: clamp(3rem, 8vw, 5rem);
-      margin-bottom: 1rem;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 2s forwards;
+    .active {
+      display: flex;
     }
 
-    .hero-subtitle {
-      font-style: italic;
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeIn 2s 0.5s forwards;
+    h1, h2 {
+      color: #a60045;
+      margin-bottom: 30px;
     }
 
-    .counter-box {
-      background: rgba(247, 231, 206, 0.4);
-      padding: 25px 50px;
-      border-radius: 60px;
-      border: 1.5px solid var(--blush);
-      backdrop-filter: blur(8px);
-      margin-top: 1rem;
-      box-shadow: 0 10px 30px rgba(128, 0, 32, 0.1);
-    }
-
-    .counter-number {
+    h1 {
+      font-family: 'Pacifico', cursive;
       font-size: 3rem;
-      font-weight: 700;
-      color: var(--burgundy);
-      display: block;
     }
 
-    .counter-label {
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 0.85rem;
-      color: var(--blush);
-      font-weight: 700;
-    }
-
-    /* --- Music Toggle --- */
-    .music-toggle {
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      z-index: 100;
-      background: var(--burgundy);
+    button {
+      padding: 15px 35px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      background: #a60045;
       color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: #c0135e;
+    }
+
+    .yesno button {
+      width: 100px;
+    }
+
+    .gift-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(128, 0, 32, 0.4);
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .music-toggle:hover {
-      transform: scale(1.15);
-    }
-
-    .music-pulse {
-      animation: pulse 2s infinite;
-    }
-
-    section {
-      padding: 120px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 3rem;
-      margin-bottom: 60px;
-    }
-
-    /* --- Timeline --- */
-    .timeline {
       position: relative;
-      padding: 50px 0;
+      transition: transform 0.3s;
     }
 
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent, var(--blush), transparent);
-      transform: translateX(-50%);
-    }
-
-    .memory-card {
-      width: 45%;
-      margin-bottom: 100px;
-      position: relative;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-    }
-
-    .memory-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .memory-card:nth-child(even) {
-      margin-left: auto;
-      text-align: left;
-    }
-
-    .memory-card:nth-child(odd) {
-      margin-right: auto;
-      text-align: right;
-    }
-
-    .card-inner {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
-      border: 1px solid rgba(192, 128, 129, 0.1);
-      transition: transform 0.4s ease;
-    }
-
-    .card-inner:hover {
-      transform: translateY(-10px);
-    }
-
-    .memory-img-wrapper {
-      overflow: hidden;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      height: 350px;
-    }
-
-    .memory-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-
-    .memory-card:hover .memory-img {
+    .box:hover {
       transform: scale(1.1);
     }
 
-    .memory-card h3 {
-      margin-bottom: 10px;
-      font-size: 1.8rem;
+    .teddy {
+      font-size: 50px;
     }
 
-    .memory-card p {
-      color: #555;
-      font-size: 1.05rem;
+    .arrow {
+      color: #a60045;
+      font-size: 1rem;
+      margin-top: 10px;
+      animation: blink 1s infinite;
     }
 
-    /* --- Gallery --- */
-    .polaroid-grid {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      padding-bottom: 50px;
-    }
-
-    .polaroid {
-      background: white;
-      padding: 15px 15px 50px 15px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s ease;
-      max-width: 350px;
-    }
-
-    .polaroid:nth-child(1) { transform: rotate(-3deg); }
-    .polaroid:nth-child(2) { transform: rotate(3deg); }
-
-    .polaroid:hover {
-      transform: rotate(0deg) scale(1.05);
-      z-index: 10;
-      box-shadow: 0 25px 55px rgba(128, 0, 32, 0.2);
-    }
-
-    .polaroid img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border: 1px solid #eee;
-    }
-
-    .polaroid-caption {
-      margin-top: 20px;
-      font-family: "Playfair Display", serif;
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--burgundy);
-    }
-
-    /* --- Love Note --- */
-    .love-note-section {
-      background: linear-gradient(to bottom, var(--off-white), var(--champagne));
-      padding: 120px 20px;
-      text-align: center;
-    }
-
-    .note-container {
-      min-height: 250px;
-      background: white;
-      padding: 60px 40px;
-      border-radius: 15px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
-      margin: 40px auto;
-      max-width: 700px;
-      border-top: 8px solid var(--burgundy);
-      position: relative;
-    }
-
-    #typewriter-text {
-      font-size: 1.3rem;
-      font-family: "Playfair Display", serif;
-      color: var(--text-dark);
-      line-height: 1.8;
-      white-space: pre-line;
-    }
-
-    .reveal-btn {
-      background: var(--burgundy);
-      color: var(--champagne);
-      border: none;
-      padding: 18px 45px;
-      font-family: "Playfair Display", serif;
-      font-size: 1.2rem;
-      cursor: pointer;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 25px rgba(128, 0, 32, 0.3);
-    }
-
-    .reveal-btn:hover {
-      background: #a00028;
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(128, 0, 32, 0.4);
-    }
-
-    footer {
-      padding: 120px 0;
-      background: var(--burgundy);
-      color: var(--champagne);
-      text-align: center;
-      clip-path: ellipse(150% 100% at 50% 100%);
-    }
-
-    .footer-content h2 {
-      color: var(--champagne);
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .seal-btn {
-      background: transparent;
-      border: 2px solid var(--champagne);
-      color: var(--champagne);
-      padding: 15px 40px;
-      font-size: 1.2rem;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 20px;
-    }
-
-    .seal-btn:hover {
-      background: var(--champagne);
-      color: var(--burgundy);
+    .hidden {
+      display: none;
     }
 
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes blink {
+      50% {opacity: 0;}
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(128, 0, 32, 0.6); }
-      70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(128, 0, 32, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(128, 0, 32, 0); }
+    .letter {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      line-height: 1.8;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
-    @media (max-width: 768px) {
-      .memory-card {
-        width: 90%;
-        margin: 40px auto !important;
-        text-align: center !important;
-      }
-      .timeline::before { left: 20px; transform: none; }
-      .timeline { padding-left: 40px; }
-      .hero-title { font-size: 3rem; }
-      .polaroid { max-width: 90%; }
-    }
   </style>
 </head>
-
 <body>
-  <canvas id="canvas-hearts"></canvas>
 
-  <div class="music-toggle music-pulse" id="musicToggle">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-    </svg>
+  <!-- Scene 1 -->
+  <div id="scene1" class="scene active">
+    <h1>Salam Meri Jan ❤️</h1>
+    <button onclick="nextScene(2)">Next ➜</button>
   </div>
 
-  <div class="container">
-    <header>
-      <h1 class="hero-title">To My Azu</h1>
-      <p class="hero-subtitle serif">"You are the poem I never knew I could write."</p>
-      <div class="counter-box">
-        <span class="counter-number" id="daysCounter">0</span>
-        <span class="counter-label">Days of Us</span>
-      </div>
-    </header>
-
-    <section class="timeline" id="story">
-      <h2 class="section-title serif">The Chapters of Us</h2>
-
-      <div class="memory-card">
-        <div class="card-inner">
-          <div class="memory-img-wrapper">
-            <img src="https://r2.erweima.ai/i/f2f6b6bd-9570-4265-a07c-d21cae923599" alt="Henna Dreams" class="memory-img">
-          </div>
-          <h3>Henna Dreams & First Glances</h3>
-          <p>The day your laughter first painted colors on my soul. The patterns of your henna seemed to mirror the connection between us—soft, intricate, and beautiful.</p>
-        </div>
-      </div>
-
-      <div class="memory-card">
-        <div class="card-inner">
-          <div class="memory-img-wrapper">
-            <img src="https://r2.erweima.ai/i/121f360f-0cb8-483f-8c17-2d02d8130dcd" alt="Joyful Echoes" class="memory-img">
-          </div>
-          <h3>Joyful Echoes in Our Hearts</h3>
-          <p>Every time you smile this way, I find a new reason to fall in love again. Our hearts echo a rhythm that only we can understand.</p>
-        </div>
-      </div>
-
-      <div class="memory-card">
-        <div class="card-inner">
-          <div class="memory-img-wrapper">
-            <img src="https://r2.erweima.ai/i/39a1b51e-38c2-408d-ae7c-e412400d10ac" alt="Broad Smiles" class="memory-img">
-          </div>
-          <h3>Broad Smiles, Deeper Bonds</h3>
-          <p>Every shared laugh is a thread weaving our forever together. These are the smiles that light up my darkest days.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="section-title serif">Captured Grace</h2>
-      <div class="polaroid-grid">
-        <div class="polaroid">
-          <img src="https://r2.erweima.ai/i/60f5c66f-0f38-4bc5-b9b8-58fffe4e0589" alt="Grace">
-          <p class="polaroid-caption">Grace in Every Frame</p>
-        </div>
-        <div class="polaroid">
-          <img src="https://r2.erweima.ai/i/541c8b24-8860-4e5e-897c-3fbf3c581839" alt="Patterns">
-          <p class="polaroid-caption">Patterns of Our Love</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="love-note-section">
-      <h2 class="serif" style="font-size: 2.5rem; margin-bottom: 20px;">A Promise from the Soul</h2>
-      <div class="note-container">
-        <p id="typewriter-text">Click below to read my heart...</p>
-      </div>
-      <button class="reveal-btn" id="revealBtn">Open the Letter</button>
-    </section>
+  <!-- Scene 2 -->
+  <div id="scene2" class="scene">
+    <h1>Kia haal hain Shezadiii 😊</h1>
+    <button onclick="nextScene(3)">Next ➜</button>
   </div>
 
-  <footer>
-    <div class="footer-content">
-      <h2 class="serif">Forever Yours, Azu.</h2>
-      <p style="font-style: italic; opacity: 0.9; margin-bottom: 30px;">To the moon and all the stars beyond...</p>
-      <button class="seal-btn" id="sealBtn">Seal this Moment</button>
-      <p style="margin-top: 60px; font-size: 0.8rem; opacity: 0.6; letter-spacing: 2px;">ESTABLISHED JANUARY 1ST, 2023</p>
+  <!-- Scene 3 (Will you be mine + Yes/No) -->
+  <div id="scene3" class="scene">
+    <h1 style="font-size:3.5rem;">Will You Be Mine Azu?</h1>
+    <p style="font-style:italic; max-width:600px;">
+      Life is an incredible journey and I want to spend every single moment with you.
+    </p>
+    <div class="yesno">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
     </div>
-  </footer>
+    <div id="arrow" class="arrow hidden">👉 Please click Yes ❤️</div>
+  </div>
+
+  <!-- Scene 4 -->
+  <div id="scene4" class="scene">
+    <h1 style="font-size:3.5rem;">Happy Valentine's Day Meri Jan 💖</h1>
+    <button onclick="nextScene(5)">Next ➜</button>
+  </div>
+
+  <!-- Scene 5 -->
+  <div id="scene5" class="scene">
+    <h1>There is something for you Meri Jan 💌</h1>
+    <button onclick="nextScene(6)">Ajao Meri Jan 💞</button>
+  </div>
+
+  <!-- Scene 6 (Gift Boxes) -->
+  <div id="scene6" class="scene">
+    <h1>Open Your Gifts 🎁</h1>
+    <div class="gift-boxes">
+      <div class="box" onclick="openGift(1)">🐻</div>
+      <div class="box" onclick="openGift(2)">🐻</div>
+      <div class="box" onclick="openGift(3)">🐻</div>
+    </div>
+  </div>
+
+  <!-- Gift 1 Questions -->
+  <div id="gift1" class="scene">
+    <h2>Gift 1: Quiz Time 💕</h2>
+    <div id="quiz"></div>
+  </div>
+
+  <!-- Gift 2 Letter -->
+  <div id="gift2" class="scene">
+    <div class="letter">
+      <h2>I Love You ❤️</h2>
+      <p>
+        When I say I love you more, I don't just mean I love you more than you love me.
+        I mean I love you more than the bad days ahead of us.
+        I love you more than any fight we will ever have.
+        I love you more than the distance between us.
+        I love you more than any obstacle that could ever try and come between us.
+        Because at the end of the day, you are the person I want to come home to.
+        You are the person I want to share my happiness, sadness, frustration and everything with.
+        My eyes will always adore you.
+      </p>
+    </div>
+  </div>
+
+  <!-- Gift 3 -->
+  <div id="gift3" class="scene">
+    <div class="letter">
+      <p>
+        I don't have enough to gift you on this beautiful moment, but I promise I will gift you انشاءاللہ, and you will be happy.
+      </p>
+    </div>
+  </div>
 
   <script>
-    const canvas = document.getElementById("canvas-hearts");
-    const ctx = canvas.getContext("2d");
-    let hearts = [];
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    class Heart {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = -20 - Math.random() * canvas.height;
-        this.size = Math.random() * 8 + 4;
-        this.speed = Math.random() * 0.8 + 0.4;
-        this.opacity = Math.random() * 0.4 + 0.1;
-        this.swing = Math.random() * 2;
-        this.swingStep = Math.random() * 360;
-      }
-      update() {
-        this.y += this.speed;
-        this.swingStep += 0.01;
-        this.x += Math.sin(this.swingStep) * this.swing;
-        if (this.y > canvas.height) this.reset();
-      }
-      draw() {
-        ctx.fillStyle = `rgba(128, 0, 32, ${this.opacity})`;
-        ctx.beginPath();
-        const top = this.size * 0.3;
-        ctx.moveTo(this.x, this.y + top);
-        ctx.bezierCurveTo(this.x, this.y, this.x - this.size / 2, this.y, this.x - this.size / 2, this.y + top);
-        ctx.bezierCurveTo(this.x - this.size / 2, this.y + (this.size + top) / 2, this.x, this.y + (this.size + top) / 2, this.x, this.y + this.size);
-        ctx.bezierCurveTo(this.x, this.y + (this.size + top) / 2, this.x + this.size / 2, this.y + (this.size + top) / 2, this.x + this.size / 2, this.y + top);
-        ctx.bezierCurveTo(this.x + this.size / 2, this.y, this.x, this.y, this.x, this.y + top);
-        ctx.fill();
-      }
+    const scenes = document.querySelectorAll('.scene');
+    function nextScene(num) {
+      scenes.forEach(s => s.classList.remove('active'));
+      document.getElementById('scene' + num).classList.add('active');
     }
 
-    function initHearts() {
-      for (let i = 0; i < 40; i++) hearts.push(new Heart());
-    }
+    // Yes / No logic
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const arrow = document.getElementById('arrow');
 
-    function animateHearts() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      hearts.forEach((h) => { h.update(); h.draw(); });
-      requestAnimationFrame(animateHearts);
-    }
-
-    initHearts();
-    animateHearts();
-
-    const startDate = new Date("2023-01-01");
-    const daysCounter = document.getElementById("daysCounter");
-    function updateCounter() {
-      const today = new Date();
-      const diffTime = Math.abs(today - startDate);
-      daysCounter.innerText = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    }
-    updateCounter();
-
-    const noteText = `Meri Jan Azu,
-
-You are the most precious part of my life and the very rhythm of my soul. In your presence, I have found a peace I never knew existed and a love that feels like home.
-
-You are the light in my eyes, the strength in my heart, and the one person who makes every struggle worth enduring. Every laugh we share and every quiet moment we spend together is a treasure I will guard for the rest of my days.
-
-Thank you for choosing me, for loving me, and for being the beautiful soul that you are. I promise to cherish you, to honor you, and to love you more with every beat of my heart.
-
-Forever yours,
-Your Love`;
-
-    const typewriterEl = document.getElementById("typewriter-text");
-    const revealBtn = document.getElementById("revealBtn");
-    let isTyping = false;
-
-    revealBtn.addEventListener("click", () => {
-      if (isTyping) return;
-      isTyping = true;
-      typewriterEl.innerText = "";
-      revealBtn.style.opacity = "0";
-      setTimeout(() => { revealBtn.style.display = "none"; }, 300);
-
-      let i = 0;
-      function type() {
-        if (i < noteText.length) {
-          typewriterEl.innerText += noteText.charAt(i);
-          i++;
-          setTimeout(type, 45);
-        } else isTyping = false;
-      }
-      type();
+    yesBtn.addEventListener('click', () => {
+      nextScene(4);
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
+    noBtn.addEventListener('click', () => {
+      arrow.classList.remove('hidden');
+      const x = Math.random() * (window.innerWidth - 200);
+      const y = Math.random() * (window.innerHeight - 200);
+      noBtn.style.position = "absolute";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
     });
 
-    document.querySelectorAll(".memory-card").forEach((card) => observer.observe(card));
+    // Gift box opening
+    function openGift(n) {
+      scenes.forEach(s => s.classList.remove('active'));
+      document.getElementById('gift' + n).classList.add('active');
+      if (n === 1) showQuiz();
+    }
 
-    const sealBtn = document.getElementById("sealBtn");
-    sealBtn.addEventListener("click", () => {
-      sealBtn.innerText = "Sealed with Eternal Love ❤️";
-      for (let i = 0; i < 30; i++) hearts.push(new Heart());
-    });
+    // Quiz logic for Gift 1
+    function showQuiz() {
+      const quizDiv = document.getElementById('quiz');
+      quizDiv.innerHTML = `
+        <div id="q1">
+          <h3>Q1: The first ever meet up day was...</h3>
+          <button onclick="q1ans('a')">Friday</button>
+          <button onclick="q1ans('b')">Monday</button>
+          <button onclick="q1ans('c')">Wednesday</button>
+        </div>
+      `;
+    }
 
-    const musicToggle = document.getElementById("musicToggle");
-    musicToggle.addEventListener("click", () => {
-      musicToggle.classList.toggle("music-pulse");
-    });
+    function q1ans(opt) {
+      const quizDiv = document.getElementById('quiz');
+      if (opt === 'b') {
+        quizDiv.innerHTML = `<h2 style="color:red;">Love You ❤️</h2><img style="width:150px;" src="https://i.imgur.com/l451rRi.png"><br><button onclick="q2()">Next Question ➜</button>`;
+      } else {
+        quizDiv.innerHTML = `<h2>😠 Hmm, Try Again!</h2><button onclick="showQuiz()">Back</button>`;
+      }
+    }
+
+    function q2() {
+      const quizDiv = document.getElementById('quiz');
+      quizDiv.innerHTML = `
+        <h3>Q2: Who fights first?</h3>
+        <button onclick="q2ans('me')">Me</button>
+        <button onclick="q2ans('you')">You</button>
+      `;
+    }
+
+    function q2ans(opt) {
+      const quizDiv = document.getElementById('quiz');
+      if (opt === 'me') {
+        quizDiv.innerHTML = `<h2>😡 Baby Angry!</h2><button onclick="q3()">Next ➜</button>`;
+      } else {
+        quizDiv.innerHTML = `<h2>Acha na Janu Sorry 😘 <br>Ainda Niiii Kronga Paka 💞</h2><button onclick="q3()">Next ➜</button>`;
+      }
+    }
+
+    function q3() {
+      const quizDiv = document.getElementById('quiz');
+      quizDiv.innerHTML = `
+        <h3>Q3: The Best Ever Moment of Life?</h3>
+        <button id="burger" onclick="moveBtn(this)">Burger Place</button>
+        <button id="park" onclick="moveBtn(this)">Park</button>
+        <button id="indus" onclick="rightAnswer()">Indus</button>
+      `;
+    }
+
+    function moveBtn(btn) {
+      const x = Math.random() * (window.innerWidth - 200);
+      const y = Math.random() * (window.innerHeight - 200);
+      btn.style.position = "absolute";
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    }
+
+    function rightAnswer() {
+      document.getElementById('quiz').innerHTML = `
+        <h1>Ahhhhaaa 😘</h1>
+        <img style="width:200px;" src="https://i.imgur.com/l451rRi.png">
+      `;
+    }
   </script>
+
 </body>
 </html>
