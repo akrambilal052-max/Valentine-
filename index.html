@@ -1,217 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For My Meri Jan ❤️</title>
+<meta charset="UTF-8">
+<title>For My Meri Jan ❤️</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:"Times New Roman",serif;
+  overflow:hidden;
+  height:100vh;
+  background:linear-gradient(135deg,#fde2e4,#fad2e1,#ffd6e0,#e2ece9);
+  display:flex;justify-content:center;align-items:center;text-align:center;
+  color:#4b154b;
+  animation:bgShift 20s infinite alternate;
+}
+@keyframes bgShift{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
+.scene{display:none;flex-direction:column;align-items:center;justify-content:center;}
+.active{display:flex;animation:fadeIn 1s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+h1{font-size:2.8rem;margin-bottom:25px;color:#7a1b5a;}
+p{max-width:680px;font-size:1.1rem;margin-bottom:15px;}
+button{
+  background:#7a1b5a;color:#fff;border:none;padding:12px 30px;border-radius:40px;
+  font-size:1rem;cursor:pointer;transition:.3s;margin:6px;
+}
+button:hover{background:#962463;transform:scale(1.08);}
+.arrow{color:#7a1b5a;animation:blink 1s infinite;}
+@keyframes blink{50%{opacity:0;}}
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{
-      height:100vh;overflow:hidden;
-      font-family:'Poppins',sans-serif;
-      background:radial-gradient(circle at top left,#fff0f5,#ffe0ec,#ffd6eb);
-      display:flex;justify-content:center;align-items:center;text-align:center;
-      color:#5a0028;animation:bgShift 20s infinite alternate;
-      position:relative;
-    }
-    @keyframes bgShift{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
+/* GIFT BOXES */
+.gift-boxes{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;}
+.box{
+  width:170px;height:170px;
+  background:linear-gradient(145deg,#fff,#f7d7e4);
+  border:3px solid #dfa1b5;
+  border-radius:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  cursor:pointer;transition:.4s;position:relative;
+}
+.box:hover{transform:scale(1.07);}
+.box span{font-size:1.4rem;color:#7a1b5a;margin-top:8px;font-weight:bold;}
 
-    .heart{
-      position:absolute;width:18px;height:18px;
-      background-color:rgba(255,50,100,0.6);
-      clip-path:path("M10 30 C-10 10 0 -5 10 5 C20 -5 30 10 10 30 Z");
-      animation:float 8s linear infinite;
-    }
-    @keyframes float{0%{transform:translateY(0);}100%{transform:translateY(-110vh);opacity:0;}}
+/* LETTER (Gift2) */
+.envelope{
+  width:250px;height:160px;position:relative;background:#fbe4ea;
+  border:2px solid #dfa1b5;border-radius:10px;
+  overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.15);
+}
+.envelope:before,.envelope:after{
+  content:'';position:absolute;left:0;width:100%;height:100%;background:#f3cbd7;
+  clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%);
+  transition:transform 1s ease;
+}
+.open .envelope:before{transform:rotateX(180deg);}
+.letter-paper{
+  opacity:0;transition:opacity 1s ease;margin-top:20px;
+  background:white;border:1px solid #e5adc4;padding:25px;border-radius:10px;
+  max-width:600px;text-align:left;line-height:1.8;
+}
+.show-letter{opacity:1;}
 
-    .scene{display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;animation:fadeIn 1s forwards;}
-    .active{display:flex;}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-
-    h1,h2{font-family:'Great Vibes',cursive;color:#a60045;margin-bottom:25px;text-shadow:1px 1px 2px rgba(0,0,0,0.1);}
-    h1{font-size:3rem;}
-    p{max-width:650px;font-size:1.1rem;margin-bottom:15px;}
-
-    button{
-      background:#a60045;color:#fff;border:none;padding:14px 34px;border-radius:50px;
-      font-size:1rem;cursor:pointer;margin:8px;transition:transform .3s;
-      box-shadow:0 4px 15px rgba(166,0,69,0.4);
-    }
-    button:hover{transform:scale(1.12);background:#d1176a;}
-    .arrow{color:#a60045;animation:blink 1s infinite;}
-    @keyframes blink{50%{opacity:0;}}
-    .gift-boxes{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;}
-    .box{
-      width:150px;height:150px;border-radius:20px;background:white;
-      display:flex;align-items:center;justify-content:center;
-      font-size:50px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.15);
-      transition:transform .3s;
-    }
-    .box:hover{transform:translateY(-10px) scale(1.05);}
-    .letter{background:white;max-width:650px;padding:35px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.1);text-align:left;line-height:1.8;}
-    .emoji-img{width:140px;margin-top:10px;}
-  </style>
+/* NOTEBOOK (Gift3) */
+.notebook{
+  width:300px;height:200px;background:#fef6f9;
+  border:3px solid #dfa1b5;border-radius:8px;
+  position:relative;box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  overflow:hidden;transition:transform 1s;
+}
+.notebook::before{
+  content:'';position:absolute;left:0;top:0;width:50%;height:100%;
+  background:#e8bccd;border-right:2px solid #b77f9b;transition:transform 1s;
+}
+.notebook.open::before{transform:rotateY(-180deg);}
+.page{
+  display:none;text-align:left;padding:25px;line-height:1.8;
+  color:#4b154b;overflow:auto;max-height:180px;
+}
+.page.visible{display:block;}
+</style>
 </head>
 <body>
-  <script>
-    // floating hearts
-    for(let i=0;i<15;i++){
-      let h=document.createElement('div');
-      h.classList.add('heart');
-      h.style.left=Math.random()*100+'vw';
-      h.style.animationDuration=(8+Math.random()*5)+'s';
-      document.body.appendChild(h);
-    }
-  </script>
 
-  <!-- Scenes -->
-  <div id="scene1" class="scene active">
-    <h1>Salam Meri Jan ❤️</h1>
-    <button onclick="nextScene(2)">Next ➜</button>
+<!--  SCENES -->
+<div id="scene1" class="scene active">
+  <h1>Salam Meri Jan ❤️</h1>
+  <button onclick="nextScene(2)">Next ➜</button>
+</div>
+
+<div id="scene2" class="scene">
+  <h1>Kia haal hain Shezadiii 😊</h1>
+  <button onclick="nextScene(3)">Next ➜</button>
+</div>
+
+<div id="scene3" class="scene">
+  <h1>Will You Be Mine Azu ?</h1>
+  <p>Life is an incredible journey and I want to spend every single moment with you.</p>
+  <div>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
   </div>
+  <div id="arrow" class="arrow" style="display:none;">👉 Please click Yes ❤️</div>
+</div>
 
-  <div id="scene2" class="scene">
-    <h1>Kia haal hain Shezadiii 😊</h1>
-    <button onclick="nextScene(3)">Next ➜</button>
+<div id="scene4" class="scene">
+  <h1>Happy Valentine’s Day Meri Jan 💖</h1>
+  <button onclick="nextScene(5)">Next ➜</button>
+</div>
+
+<div id="scene5" class="scene">
+  <h1>There is something for you Meri Jan 💌</h1>
+  <button onclick="nextScene(6)">Ajao Meri Jan 💞</button>
+</div>
+
+<div id="scene6" class="scene">
+  <h1>Open Your Gifts 🎁</h1>
+  <div class="gift-boxes">
+    <div class="box" onclick="openGift(1)"><span>Gift 1</span></div>
+    <div class="box" onclick="openGift(2)"><span>Gift 2</span></div>
+    <div class="box" onclick="openGift(3)"><span>Gift 3</span></div>
   </div>
+</div>
 
-  <div id="scene3" class="scene">
-    <h1 style="font-size:3.5rem;">Will You Be Mine Azu?</h1>
-    <p>Life is an incredible journey and I want to spend every single moment with you.</p>
-    <div class="yesno">
-      <button id="yesBtn">Yes</button>
-      <button id="noBtn">No</button>
-    </div>
-    <div id="arrow" class="arrow" style="display:none;">👉 Please click Yes ❤️</div>
+<!-- Gift1 -->
+<div id="gift1" class="scene"><h2>Gift 1 : Quiz Time 💕</h2><div id="quiz"></div></div>
+
+<!-- Gift2 Letter -->
+<div id="gift2" class="scene">
+  <div class="envelope" id="envelope"></div>
+  <div id="letterText" class="letter-paper">
+    <h2 style="text-align:center;color:#7a1b5a;">I Love You ❤️</h2>
+    <p>
+      When I say I love you more, I don’t just mean I love you more than you love me. I mean I love you more than the bad days ahead of us. 
+      I love you more than any fight we will ever have. I love you more than the distance between us. I love you more than any obstacle that could come between us. 
+      Because at the end of the day, you are the person I want to come home to — the one I want to share my happiness, sadness, and everything with. 
+      My eyes will always adore you.
+    </p>
+    <p style="margin-top:15px;color:#7a1b5a;font-weight:bold;">
+      You are my home, my heart, my forever Azu 💞
+    </p>
   </div>
+  <button style="margin-top:25px;" onclick="openGift(3)">Next Gift ➜</button>
+  <button onclick="nextScene(6)">⬅ Back to Gifts</button>
+</div>
 
-  <div id="scene4" class="scene">
-    <h1 style="font-size:3.5rem;">Happy Valentine’s Day Meri Jan 💖</h1>
-    <button onclick="nextScene(5)">Next ➜</button>
-  </div>
-
-  <div id="scene5" class="scene">
-    <h1>There is something for you Meri Jan 💌</h1>
-    <button onclick="nextScene(6)">Ajao Meri Jan 💞</button>
-  </div>
-
-  <div id="scene6" class="scene">
-    <h1>Open Your Gifts 🎁</h1>
-    <div class="gift-boxes">
-      <div class="box" onclick="openGift(1)">🐻</div>
-      <div class="box" onclick="openGift(2)">🐻</div>
-      <div class="box" onclick="openGift(3)">🐻</div>
-    </div>
-  </div>
-
-  <div id="gift1" class="scene">
-    <h2>Gift 1 : Quiz Time 💕</h2>
-    <div id="quiz"></div>
-  </div>
-
-  <div id="gift2" class="scene">
-    <div class="letter">
-      <h2 style="text-align:center;">I Love You ❤️</h2>
+<!-- Gift3 Notebook -->
+<div id="gift3" class="scene">
+  <div class="notebook" id="notebook">
+    <div class="page" id="page">
+      <h3 style="text-align:center;color:#7a1b5a;">💌 My Promise</h3>
       <p>
-        When I say I love you more, I don’t just mean I love you more than you love me. I mean I love you more than the bad days ahead of us.  
-        I love you more than any fight we will ever have. I love you more than the distance between us. I love you more than any obstacle that might come between us.  
-        Because at the end of the day, you’re the person I want to come home to — the one I want to share my happiness, sadness, and everything with.  
-        My eyes will always adore you.  
+        I don’t have enough to gift you on this beautiful moment, but I promise I will gift you انشاءاللہ, and you will be happy. 
       </p>
-      <p style="margin-top:15px;color:#a60045;font-weight:bold;">
-        You are my home, my heart, my forever Azu 💞
+      <p>
+        You are my happiness, my peace, and my most precious prayer come true. 🌸  
       </p>
-    </div>
-    <div style="margin-top:25px;">
-      <button onclick="openGift(3)">Next Gift ➜</button>
-      <button onclick="nextScene(6)">⬅ Back to Gifts</button>
     </div>
   </div>
+  <button id="openNotebook" style="margin-top:20px;">Open Notebook 📖</button>
+  <button onclick="nextScene(6)">⬅ Back to Gifts</button>
+</div>
 
-  <div id="gift3" class="scene">
-    <div class="letter" style="text-align:center;">
-      <p style="font-size:1.2rem;">
-        I don’t have enough to gift you on this beautiful moment, but I promise I will gift you <b>انشاءاللہ</b> and you will be happy.  
-      </p>
-      <p style="margin-top:20px;">
-        You’re my happiness, my peace, and my most precious prayer come true. 🌸  
-      </p>
-      <p style="margin-top:25px;color:#a60045;font-weight:bold;">I Love You Endlessly 💖</p>
-    </div>
-    <button style="margin-top:35px;" onclick="nextScene(6)">⬅ Back to Gifts</button>
-  </div>
+<script>
+const scenes=document.querySelectorAll('.scene');
+function nextScene(n){scenes.forEach(s=>s.classList.remove('active'));document.getElementById('scene'+n).classList.add('active');}
 
-  <script>
-    const scenes=document.querySelectorAll('.scene');
-    function nextScene(n){scenes.forEach(s=>s.classList.remove('active'));document.getElementById('scene'+n).classList.add('active');}
+// Yes/No
+const yes=document.getElementById('yesBtn'),no=document.getElementById('noBtn'),arrow=document.getElementById('arrow');
+yes.addEventListener('click',()=>nextScene(4));
+no.addEventListener('click',()=>{
+ arrow.style.display='block';
+ const x=Math.random()*(window.innerWidth-150),y=Math.random()*(window.innerHeight-150);
+ no.style.position='absolute';no.style.left=x+'px';no.style.top=y+'px';
+});
 
-    // yes/no
-    const yes=document.getElementById('yesBtn'),no=document.getElementById('noBtn'),arrow=document.getElementById('arrow');
-    yes.addEventListener('click',()=>nextScene(4));
-    no.addEventListener('click',()=>{
-      arrow.style.display='block';
-      const x=Math.random()*(window.innerWidth-150);
-      const y=Math.random()*(window.innerHeight-150);
-      no.style.position='absolute';no.style.left=x+'px';no.style.top=y+'px';
-    });
+// GIFT NAVIGATION
+function openGift(n){
+  scenes.forEach(s=>s.classList.remove('active'));
+  document.getElementById('gift'+n).classList.add('active');
+  if(n===1)showQuiz();
+  if(n===2)startEnvelope();
+}
 
-    // open gift
-    function openGift(n){scenes.forEach(s=>s.classList.remove('active'));document.getElementById('gift'+n).classList.add('active');if(n===1)showQuiz();}
+// QUIZ (Gift1)
+function showQuiz(){
+ const q=document.getElementById('quiz');
+ q.innerHTML=`<h3>Q1: The first ever meet up day was...</h3>
+   <button onclick="q1('a')">Friday</button>
+   <button onclick="q1('b')">Monday</button>
+   <button onclick="q1('c')">Wednesday</button>`;
+}
+function q1(a){
+ const q=document.getElementById('quiz');
+ if(a==='b'){q.innerHTML="<h2>❤️ Love You ❤️</h2><button onclick='q2()'>Next Question ➜</button>";}
+ else{q.innerHTML="<h2>😠 Wrong Answer</h2><button onclick='showQuiz()'>Back</button>";}
+}
+function q2(){
+ const q=document.getElementById('quiz');
+ q.innerHTML=`<h3>Q2: Who fights first?</h3>
+ <button onclick="q2ans('me')">Me</button>
+ <button onclick="q2ans('you')">You</button>`;
+}
+function q2ans(a){
+ const q=document.getElementById('quiz');
+ if(a==='me'){q.innerHTML="<h2>😡 Baby Angry!</h2><button onclick='q3()'>Next ➜</button><button onclick='q2()'>Back</button>";}
+ else{q.innerHTML="<h2>😘 Acha na Janu Sorry 💞</h2><button onclick='q3()'>Next ➜</button><button onclick='q2()'>Back</button>";}
+}
+function q3(){
+ const q=document.getElementById('quiz');
+ q.innerHTML=`<h3>Q3: Best Moment of Life?</h3>
+ <button onclick='moveBtn(this)'>Burger Place</button>
+ <button onclick='moveBtn(this)'>Park</button>
+ <button onclick='rightAnswer()'>Indus</button><br><button onclick='q2()'>Back</button>`;
+}
+function moveBtn(btn){
+ const x=Math.random()*(window.innerWidth-200),y=Math.random()*(window.innerHeight-200);
+ btn.style.position='absolute';btn.style.left=x+'px';btn.style.top=y+'px';
+}
+function rightAnswer(){
+ document.getElementById('quiz').innerHTML="<h1>Ahhhhaaa 😘</h1><button onclick='openGift(2)'>Next Gift ➜</button>";
+}
 
-    // quiz logic
-    function showQuiz(){
-      const quiz=document.getElementById('quiz');
-      quiz.innerHTML=`<div>
-          <h3>Q1: The first ever meet up day was...</h3>
-          <button onclick="q1('a')">Friday</button>
-          <button onclick="q1('b')">Monday</button>
-          <button onclick="q1('c')">Wednesday</button>
-      </div>`;
-    }
+// GIFT2 envelope animation
+function startEnvelope(){
+ const env=document.getElementById('envelope'),letter=document.getElementById('letterText');
+ env.classList.add('open');
+ setTimeout(()=>letter.classList.add('show-letter'),2000);
+}
 
-    function q1(a){
-      const q=document.getElementById('quiz');
-      if(a==='b'){
-        q.innerHTML="<h2 style='color:#a60045;'>Love You ❤️</h2><img class='emoji-img' src='https://i.imgur.com/l451rRi.png'><br><button onclick='q2()'>Next Question ➜</button>";
-      }else{
-        q.innerHTML="<h2>😠 Wrong Answer!</h2><button onclick='showQuiz()'>⬅ Back</button>";
-      }
-    }
-
-    function q2(){
-      const q=document.getElementById('quiz');
-      q.innerHTML="<h3>Q2: Who fights first?</h3><button onclick=\"q2ans('me')\">Me</button><button onclick=\"q2ans('you')\">You</button>";
-    }
-
-    function q2ans(ans){
-      const q=document.getElementById('quiz');
-      if(ans==='me'){
-        q.innerHTML="<h2>😡 Baby Angry!</h2><img class='emoji-img' src='https://i.imgur.com/T6V8zla.png'><div><button onclick='q3()'>Next ➜</button><button onclick='q2()'>⬅ Back</button></div>";
-      }else{
-        q.innerHTML="<h2>Acha na Janu, Sorry 😘<br>Ainda Niii Kronga Paka 💞</h2><div><button onclick='q3()'>Next ➜</button><button onclick='q2()'>⬅ Back</button></div>";
-      }
-    }
-
-    function q3(){
-      const q=document.getElementById('quiz');
-      q.innerHTML="<h3>Q3: The Best Ever Moment of Life?</h3>\
-      <button id='b1' onclick='moveBtn(this)'>Burger Place</button>\
-      <button id='b2' onclick='moveBtn(this)'>Park</button>\
-      <button id='b3' onclick='rightAnswer()'>Indus</button>\
-      <div><br><button onclick='q2()'>⬅ Back</button></div>";
-    }
-
-    function moveBtn(btn){
-      const x=Math.random()*(window.innerWidth-200);
-      const y=Math.random()*(window.innerHeight-200);
-      btn.style.position='absolute';btn.style.left=x+'px';btn.style.top=y+'px';
-    }
-
-    function rightAnswer(){
-      document.getElementById('quiz').innerHTML="<h1>Ahhhhaaa 😘</h1><img class='emoji-img' src='https://i.imgur.com/l451rRi.png'><div><button onclick='openGift(2)'>Next Gift ➜</button></div>";
-    }
-  </script>
+// GIFT3 notebook open
+document.getElementById('openNotebook').addEventListener('click',()=>{
+ const nb=document.getElementById('notebook'),pg=document.getElementById('page');
+ nb.classList.toggle('open');
+ if(nb.classList.contains('open'))setTimeout(()=>pg.classList.add('visible'),1000);
+ else pg.classList.remove('visible');
+});
+</script>
 </body>
 </html>
