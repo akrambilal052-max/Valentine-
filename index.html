@@ -5,107 +5,140 @@
 <title>For My Meri Jan ❤️</title>
 
 <style>
+/* General Layout */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:"Times New Roman",serif;
-  background:linear-gradient(135deg,#fde2e4,#fad2e1,#ffd6e0,#ffe6eb);
+  background:linear-gradient(135deg,#ffe6f2,#ffdee9,#ffecef);
   min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;justify-content:center;align-items:center;
   flex-direction:column;text-align:center;color:#4b154b;
-  overflow:hidden;
-  animation:bgShift 20s infinite alternate;
+  overflow-x:hidden;overflow-y:auto;
 }
-@keyframes bgShift{0%{background-position:0 0;}100%{background-position:100% 100%;}}
 
-h1,h2{color:#7a1b5a;margin-bottom:20px;}
-p{font-size:1.1rem;max-width:680px;}
-button{
-  margin:8px;padding:12px 32px;
-  background:#7a1b5a;color:#fff;border:none;border-radius:40px;
-  cursor:pointer;transition:.3s;font-size:1rem;
-  box-shadow:0 4px 15px rgba(124,20,60,0.35);
-}
-button:hover{background:#962463;transform:scale(1.08);}
-.scene{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;}
-.active{display:flex;animation:fadeIn 1s forwards;}
+/* Scenes */
+.scene{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
+.active{display:flex;animation:fadeIn 1.2s forwards;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-/* --- Gift Boxes --- */
+/* Buttons */
+button{
+  margin:8px;padding:12px 32px;border:none;border-radius:40px;
+  background:#b30059;color:#fff;font-size:1rem;cursor:pointer;
+  transition:.3s;box-shadow:0 4px 15px rgba(179,0,89,0.3);
+}
+button:hover{background:#cc0066;transform:scale(1.08);}
+
+h1{color:#b30059;font-size:2.8rem;margin-bottom:20px;text-shadow:1px 1px #fff;}
+h2{color:#b30059;margin-bottom:15px;font-size:1.8rem;text-shadow:1px 1px #fff;}
+p{font-size:1.1rem;max-width:700px;line-height:1.6;}
+
+/* ---------- Gift Boxes ---------- */
 .gift-boxes{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;}
 .box{
-  width:170px;height:170px;border-radius:25px;
-  background:linear-gradient(145deg,#fff,#f7d7e4);
-  border:3px solid #dfa1b5;box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  width:180px;height:180px;border-radius:20px;
+  background:linear-gradient(145deg,#fff0f5,#ffd6e0);
+  border:2px solid #ff99c8;
   display:flex;flex-direction:column;justify-content:center;align-items:center;
-  cursor:pointer;transition:.4s;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition:.4s;
 }
-.box:hover{transform:scale(1.07);}
-.box span{font-size:1.4rem;color:#7a1b5a;font-weight:bold;}
+.box:hover{transform:scale(1.1);box-shadow:0 15px 30px rgba(179,0,89,0.25);}
+.box span{font-size:1.4rem;color:#b30059;font-weight:bold;}
 
-/* --- Gift 2 Letter --- */
+/* ---------- Gift 1 : Quiz ---------- */
+.quiz-card{
+  background:#fff0f5;
+  border:2px solid #ff99c8;
+  padding:30px;border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);max-width:450px;
+}
+.quiz-card h3{color:#b30059;margin-bottom:10px;}
+.quiz-btn{
+  background:#ff99c8;color:#fff;border:none;
+  border-radius:30px;width:80%;margin:8px;padding:10px;
+  cursor:pointer;font-size:1rem;transition:.3s;
+}
+.quiz-btn:hover{background:#ff6699;transform:scale(1.05);}
+.result{font-size:1.3rem;margin-top:20px;}
+
+/* ---------- Gift 2 : Letter ---------- */
+#gift2{position:relative;}
 .envelope{
-  width:280px;height:180px;background:#fbe4ea;border:2px solid #dfa1b5;
-  border-radius:10px;position:relative;overflow:hidden;
-  transition:transform 1.3s ease;box-shadow:0 8px 20px rgba(0,0,0,.15);
+  width:290px;height:190px;background:#fbe4ea;border:2px solid #ff99c8;
+  border-radius:10px;position:relative;overflow:hidden;margin-bottom:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  transition:transform 1s ease;
 }
 .envelope::before{
-  content:"";position:absolute;width:100%;height:100%;
-  background:#f3cbd7;
+  content:"";
+  position:absolute;width:100%;height:100%;
+  background:#ffb3d9;
   clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%);
-  transition:transform 1s ease;transform-origin:top;
+  transform-origin:top;
+  transition:transform 1s ease;
 }
 .envelope.open::before{transform:rotateX(180deg);}
-.envelope.moveUp{transform:translateY(-120px);}
+.envelope.moveUp{transform:translateY(-130px);}
 .letter-paper{
-  opacity:0;background:white;border:1.5px solid #dfa1b5;border-radius:10px;
-  margin-top:25px;width:340px;max-width:90vw;padding:25px;text-align:left;
-  line-height:1.6;box-shadow:0 6px 18px rgba(0,0,0,0.12);
-  transform:translateY(25px);transition:all 1s ease;
+  opacity:0;background:#fff;border:1.5px solid #ff99c8;border-radius:10px;
+  width:380px;max-width:95vw;padding:30px;text-align:left;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  transform:translateY(20px);
+  transition:all 1s ease;
 }
 .letter-paper.show{opacity:1;transform:translateY(0);}
-.line{opacity:0;overflow:hidden;white-space:normal;}
+.letter-line{opacity:0;margin-bottom:10px;animation:fadeLine 1s forwards;}
+@keyframes fadeLine{to{opacity:1;}}
 
-/* --- Gift 3 Notebook --- */
+/* ---------- Gift 3 : Notebook ---------- */
 .notebook{
-  width:320px;height:230px;background:#f6d0df;border:3px solid #ce9fb3;
-  border-radius:10px;position:relative;box-shadow:0 8px 25px rgba(0,0,0,.15);
-  perspective:1200px;transition:transform 1s ease-in-out,margin-top 1s ease;
-}
-.notebook::before{
-  content:'';position:absolute;left:-6px;top:0;width:6px;height:100%;
-  background:#b77f9b;border-right:1px solid #a26689;border-radius:6px 0 0 6px;
+  width:340px;height:240px;background:#fbe4ea;
+  border:3px solid #ff99c8;border-radius:12px;
+  position:relative;box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  perspective:1200px;margin-bottom:20px;
 }
 .cover{
-  position:absolute;top:0;left:0;width:100%;height:100%;background:#e8bccd;
-  border-radius:10px;transform-origin:left;transform:rotateY(0deg);
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(145deg,#ffb3d9,#ffa3c0);
+  border-radius:12px;transform-origin:left;transform:rotateY(0deg);
   transition:transform 1s ease-in-out;
 }
 .page{
-  position:absolute;top:0;left:0;width:100%;height:100%;
-  background:#fff;border-radius:7px;
+  position:absolute;width:100%;height:100%;top:0;left:0;
+  background:#fff;border-radius:10px;padding:25px;text-align:left;
   box-shadow:inset 0 0 10px rgba(0,0,0,0.1);
-  padding:25px;line-height:1.6;text-align:left;overflow:auto;
-  opacity:0;transform:translateY(25px);
+  overflow:auto;opacity:0;transform:translateY(20px);
   transition:opacity 1s ease,transform 1s ease;
 }
-.notebook.open{margin-top:-40px;}
 .notebook.open .cover{transform:rotateY(-140deg);}
 .notebook.open .page{opacity:1;transform:translateY(0);}
-.page p{opacity:0;white-space:normal;}
+.page p{opacity:0;margin-bottom:10px;animation:fadeLine 1s forwards;}
+/* Background Hearts */
+@keyframes floatHearts{
+  0%{transform:translateY(0) scale(1);}
+  100%{transform:translateY(-100vh) scale(0.5);}
+}
+.heart{
+  position:absolute;width:20px;height:20px;
+  background:rgba(255,0,90,0.3);
+  clip-path:path("M10 30 C-10 10 0 -5 10 5 C20 -5 30 10 10 30 Z");
+  animation:floatHearts 8s linear infinite;
+}
 </style>
 </head>
-
 <body>
 
-<!-- Scenes -->
+<!-- ------- Scenes ------- -->
 <div id="scene1" class="scene active">
   <h1>Salam Meri Jan ❤️</h1>
-  <button onclick="nextScene(2)">Next ➜</button>
+  <button onclick="nextScene(2)">Next ➜</button>
 </div>
 
 <div id="scene2" class="scene">
   <h1>Kia haal hain Shezadiii 😊</h1>
-  <button onclick="nextScene(3)">Next ➜</button>
+  <button onclick="nextScene(3)">Next ➜</button>
 </div>
 
 <div id="scene3" class="scene">
@@ -115,12 +148,12 @@ button:hover{background:#962463;transform:scale(1.08);}
     <button id="yesBtn">Yes</button>
     <button id="noBtn">No</button>
   </div>
-  <div id="arrow" class="arrow" style="display:none;">👉 Please click Yes ❤️</div>
+  <div id="arrow" style="color:#b30059;margin-top:10px;display:none;">👉 Please click Yes ❤️</div>
 </div>
 
 <div id="scene4" class="scene">
   <h1>Happy Valentine’s Day Meri Jan 💖</h1>
-  <button onclick="nextScene(5)">Next ➜</button>
+  <button onclick="nextScene(5)">Next ➜</button>
 </div>
 
 <div id="scene5" class="scene">
@@ -131,63 +164,78 @@ button:hover{background:#962463;transform:scale(1.08);}
 <div id="scene6" class="scene">
   <h1>Open Your Gifts 🎁</h1>
   <div class="gift-boxes">
-    <div class="box" onclick="openGift(1)"><span>Gift 1</span></div>
-    <div class="box" onclick="openGift(2)"><span>Gift 2</span></div>
-    <div class="box" onclick="openGift(3)"><span>Gift 3</span></div>
+    <div class="box" onclick="openGift(1)"><span>💖 Gift 1</span></div>
+    <div class="box" onclick="openGift(2)"><span>💌 Gift 2</span></div>
+    <div class="box" onclick="openGift(3)"><span>📖 Gift 3</span></div>
   </div>
 </div>
 
-<!-- GIFT 2 -->
-<div id="gift2" class="scene">
-  <div class="envelope" id="envelope"></div>
-  <div id="letter" class="letter-paper">
-    <h2>I Love You ❤️</h2>
-    <div id="letterLines">
-      <p class="line">When I say I love you more, I don’t just mean I love you more than you love me.</p>
-      <p class="line">I mean I love you more than the bad days ahead of us, more than any fight we will ever have.</p>
-      <p class="line">I love you more than the distance between us and any obstacle that could ever come between us.</p>
-      <p class="line">Because at the end of the day, you’re the person I want to come home to — the one I want to share my happiness, sadness, and everything with.</p>
-      <p class="line">My eyes will always adore you. You are my home, my heart, my forever Azu 💞</p>
+<!-- Gift1 -->
+<div id="gift1" class="scene">
+  <div class="quiz-card">
+    <h2>Gift 1 – Quiz Time 💕</h2>
+    <div id="quiz">
+      <h3>Q1. The first ever meet up day was...</h3>
+      <button class="quiz-btn" onclick="quizAns('a')">🩷 Friday</button>
+      <button class="quiz-btn" onclick="quizAns('b')">💞 Monday</button>
+      <button class="quiz-btn" onclick="quizAns('c')">💖 Wednesday</button>
+      <div id="quiz-result" class="result"></div>
     </div>
   </div>
-  <div>
-    <button onclick="openGift(3)">Next Gift ➜</button>
-    <button onclick="nextScene(6)">⬅ Back to Gifts</button>
-  </div>
+  <button onclick="nextScene(6)">⬅ Back to Gifts</button>
 </div>
 
-<!-- GIFT 3 -->
+<!-- Gift2 -->
+<div id="gift2" class="scene">
+  <audio id="music" src="https://cdn.pixabay.com/download/audio/2022/03/08/audio_46ab1e951a.mp3?filename=romantic-piano-112643.mp3"></audio>
+  <div class="envelope" id="envelope"></div>
+  <div class="letter-paper" id="letter">
+    <h2>I Love You ❤️</h2>
+    <p class="letter-line">When I say I love you more, I don’t just mean I love you more than you love me.</p>
+    <p class="letter-line">I mean I love you more than the bad days ahead of us, more than any fight we will ever have.</p>
+    <p class="letter-line">I love you more than the distance between us and any obstacle that could ever come between us.</p>
+    <p class="letter-line">Because at the end of the day, you’re the person I want to come home to — the one I want to share my happiness, sadness, and everything with.</p>
+    <p class="letter-line">My eyes will always adore you. You are my home, my heart, my forever Azu 💞</p>
+  </div>
+  <button onclick="openGift(3)">Next Gift ➜</button>
+  <button onclick="nextScene(6)">⬅ Back to Gifts</button>
+</div>
+
+<!-- Gift3 -->
 <div id="gift3" class="scene">
   <h2>Gift 3 – My Promise Notebook 💖</h2>
   <div class="notebook" id="notebook">
     <div class="cover"></div>
     <div class="page" id="page">
-      <p id="p1">I don’t have enough to gift you on this beautiful moment, but I promise I will gift you <b>انشاءاللہ</b>.</p>
-      <p id="p2">You will be happy, because seeing you smile is the greatest gift I could ever receive.</p>
-      <p id="p3">You’re my happiness, my peace, and my most precious prayer come true. 🌸</p>
+      <p>I don’t have enough to gift you on this beautiful moment, but I promise I will gift you <b>انشاءاللہ</b>.</p>
+      <p>You will be happy, because seeing you smile is the greatest gift I could ever receive.</p>
+      <p>You’re my happiness, my peace, and my most precious prayer come true. 🌸</p>
     </div>
   </div>
-  <div>
-    <button id="openBtn">Open Notebook 📖</button>
-    <button onclick="nextScene(6)">⬅ Back to Gifts</button>
-  </div>
+  <button id="openBtn">Open Notebook 📖</button>
+  <button onclick="nextScene(6)">⬅ Back to Gifts</button>
 </div>
 
 <script>
+/* Utility: change scenes */
 const scenes=document.querySelectorAll('.scene');
-function nextScene(n){scenes.forEach(s=>s.classList.remove('active'));document.getElementById('scene'+n).classList.add('active');}
+function nextScene(n){scenes.forEach(s=>s.classList.remove('active'));
+document.getElementById('scene'+n).classList.add('active');}
 
-/* YES/NO Logic */
-const yes=document.getElementById('yesBtn'),no=document.getElementById('noBtn'),arrow=document.getElementById('arrow');
-if(yes){yes.addEventListener('click',()=>nextScene(4));}
-if(no){no.addEventListener('click',()=>{
+/* Yes/No logic */
+const yes=document.getElementById('yesBtn');
+const no=document.getElementById('noBtn');
+const arrow=document.getElementById('arrow');
+yes.addEventListener('click',()=>nextScene(4));
+no.addEventListener('click',()=>{
   arrow.style.display='block';
   const x=Math.random()*(window.innerWidth-150);
   const y=Math.random()*(window.innerHeight-150);
-  no.style.position='absolute';no.style.left=x+'px';no.style.top=y+'px';
-});}
+  no.style.position='absolute';
+  no.style.left=x+'px';no.style.top=y+'px';
+});
 
-/* Gift Navigation */
+/* Gift switcher */
 function openGift(n){
   scenes.forEach(s=>s.classList.remove('active'));
   document.getElementById('gift'+n).classList.add('active');
@@ -195,30 +243,32 @@ function openGift(n){
   if(n===3) resetNotebook();
 }
 
-/* ---------- GIFT 2 LOGIC ---------- */
+/* Gift1 quiz basic */
+function quizAns(a){
+  const res=document.getElementById('quiz-result');
+  if(a==='b'){res.innerHTML="💝  Correct – You remember our special Monday!  😘";}
+  else{res.innerHTML="😅 Nooo Jaan, Try Again!";}
+}
+
+/* Gift2 logic */
 function startLetter(){
   const env=document.getElementById('envelope');
   const letter=document.getElementById('letter');
-  const lines=document.querySelectorAll('#letterLines .line');
-  // reset
+  const music=document.getElementById('music');
+  const lines=document.querySelectorAll('.letter-line');
   env.classList.remove('open','moveUp');
   letter.classList.remove('show');
-  lines.forEach(l=>{l.style.opacity=0;});
-  // animation
-  setTimeout(()=>env.classList.add('moveUp'),300);
-  setTimeout(()=>env.classList.add('open'),800);
-  setTimeout(()=>letter.classList.add('show'),2000);
+  lines.forEach(l=>l.style.opacity=0);
+  setTimeout(()=>env.classList.add('moveUp'),400);
+  setTimeout(()=>env.classList.add('open'),1000);
+  setTimeout(()=>letter.classList.add('show'),1800);
   setTimeout(()=>{
-    // show lines sequentially with delay
-    lines.forEach((l,i)=>{
-      setTimeout(()=>{
-        l.style.opacity=1;
-      },i*1500);
-    });
-  },2300);
+    music.volume=0.5;music.play();
+    lines.forEach((l,i)=>setTimeout(()=>{l.style.opacity=1;},i*1500));
+  },2200);
 }
 
-/* ---------- GIFT 3 LOGIC ---------- */
+/* Gift3 logic */
 const notebook=document.getElementById('notebook');
 const openBtn=document.getElementById('openBtn');
 const page=document.getElementById('page');
@@ -228,19 +278,25 @@ function resetNotebook(){
   Array.from(page.querySelectorAll('p')).forEach(p=>p.style.opacity=0);
   opened=false;
 }
-if(openBtn){
 openBtn.addEventListener('click',()=>{
   if(!opened){
     opened=true;
     notebook.classList.add('open');
     const paras=page.querySelectorAll('p');
-    paras.forEach((p,i)=>{
-      setTimeout(()=>{p.style.opacity=1;},i*1500+800);
-    });
+    paras.forEach((p,i)=>setTimeout(()=>{p.style.opacity=1;},i*1500+800));
   }else{
     resetNotebook();
   }
 });
+
+/* floating hearts background */
+for(let i=0;i<15;i++){
+  const h=document.createElement('div');
+  h.classList.add('heart');
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDuration=(8+Math.random()*5)+'s';
+  h.style.background=`rgba(255,${50+Math.random()*100},${80+Math.random()*100},0.4)`;
+  document.body.appendChild(h);
 }
 </script>
 </body>
