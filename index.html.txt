@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Azu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #FFFDD0;
+  color: #2D0A0A;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 3px;
+  background: rgba(128,0,32,0.95);
+  color: #F7E7CE;
+  z-index: 1000;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 70px;
+  color: #800020;
+}
+
+.hero p {
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.button {
+  margin-top: 40px;
+  padding: 15px 40px;
+  background: #F7E7CE;
+  border: none;
+  border-radius: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.section {
+  padding: 120px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.memory {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.memory img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.memory h3 {
+  margin-top: 20px;
+  color: #800020;
+}
+
+.letter {
+  background: #800020;
+  color: #F7E7CE;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.letter-box {
+  background: #FFFDD0;
+  color: #2D0A0A;
+  max-width: 600px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #800020;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  color: rgba(128,0,32,0.3);
+  animation: float 8s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-40px); }
+  100% { transform: translateY(0px); }
+}
+</style>
+</head>
+
+<body>
+
+<nav>FOR MY AZU</nav>
+
+<section class="hero">
+  <div class="heart" style="top:20%; left:10%; font-size:40px;">❤</div>
+  <div class="heart" style="top:60%; left:80%; font-size:30px;">❤</div>
+  <div class="heart" style="top:40%; left:50%; font-size:35px;">❤</div>
+
+  <h1>To My Azu</h1>
+  <p>In a world of temporary things,<br><strong>you are my forever.</strong></p>
+  <button class="button" onclick="scrollToMemories()">Explore Our Memories</button>
+</section>
+
+<section class="section" id="memories">
+  <h2 style="text-align:center; font-size:50px; color:#800020;">Our Story</h2>
+
+  <div class="memory">
+    <img src="https://placehold.co/800x600/800020/F7E7CE?text=The+First+Smile">
+    <h3>The First Spark</h3>
+    <p>The moment the world stopped and it was just us.</p>
+  </div>
+
+  <div class="memory">
+    <img src="https://placehold.co/800x600/800020/F7E7CE?text=Golden+Hour">
+    <h3>First Sunset</h3>
+    <p>Under the gold sky, I knew you were the one.</p>
+  </div>
+
+  <div class="memory">
+    <img src="https://placehold.co/800x600/800020/F7E7CE?text=Forever+Home">
+    <h3>Your Forever Home</h3>
+    <p>Because my heart is your forever home.</p>
+  </div>
+</section>
+
+<section class="letter">
+  <h2 style="font-size:50px;">A Soul's Confession</h2>
+  <div class="letter-box">
+    <h3 style="color:#800020;">My Dearest Azu,</h3>
+    <p>
+      There aren't enough words in any language to describe the depth of what I feel for you.  
+      You are my calm in every storm and the light in my life.
+    </p>
+    <p>
+      This website is just a small reflection of the beautiful world we've built.  
+      Thank you for being you.
+    </p>
+    <p><strong>Forever yours,</strong><br>With all my love</p>
+  </div>
+</section>
+
+<footer>
+  Always & Forever, Azu
+</footer>
+
+<script>
+function scrollToMemories() {
+  document.getElementById("memories").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
