@@ -2,118 +2,267 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Gift 3 – My Promise Notebook</title>
+<title>For My Meri Jan ❤️</title>
+
+<!-- Styles -->
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:"Times New Roman",serif;
-  background:linear-gradient(135deg,#fde2e4,#fad2e1,#ffe6eb);
-  height:100vh;display:flex;justify-content:center;align-items:center;
-  flex-direction:column;
+  background:linear-gradient(135deg,#fde2e4,#fad2e1,#ffd6e0,#ffe6eb);
+  min-height:100vh;
+  display:flex;justify-content:center;align-items:center;
   color:#4b154b;text-align:center;
-  overflow:hidden;animation:bgShift 20s infinite alternate;
+  overflow:hidden;
+  animation:bgShift 22s infinite alternate;
 }
-@keyframes bgShift{0%{background-position:0 0;}100%{background-position:100% 100%;}}
-h3{color:#7a1b5a;margin-bottom:10px;}
+@keyframes bgShift{0%{background-position:0 50%;}100%{background-position:100% 50%;}}
+.scene{display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+.active{display:flex;animation:fadeIn 1s forwards;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
+
+/* Headlines + Buttons */
+h1{font-size:2.6rem;margin-bottom:20px;color:#7a1b5a;}
+h2{color:#7a1b5a;margin-bottom:15px;font-size:1.8rem;}
+p{max-width:680px;font-size:1.1rem;margin-bottom:15px;}
 button{
-  border:none;border-radius:40px;padding:12px 30px;margin-top:20px;
+  padding:12px 32px;margin:6px;border:none;border-radius:40px;
   background:#7a1b5a;color:#fff;font-size:1rem;cursor:pointer;
-  box-shadow:0 5px 15px rgba(124,20,60,0.3);transition:0.3s;
+  transition:.3s;box-shadow:0 4px 15px rgba(124,20,60,0.35);
 }
 button:hover{background:#962463;transform:scale(1.08);}
+.arrow{color:#7a1b5a;animation:blink 1s infinite;}
+@keyframes blink{50%{opacity:0;}}
 
-/* NOTEBOOK body */
-.notebook{
-  width:320px;height:220px;
-  background:#f7d7e4;
-  border:3px solid #ce9fb3;
-  border-radius:10px;
-  position:relative;
-  box-shadow:0 8px 25px rgba(0,0,0,0.15);
-  perspective:1200px;
-  transition:transform 1.3s ease-in-out, margin-top 1.2s ease;
+/* ------- Gift Boxes ------- */
+.gift-boxes{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;}
+.box{
+  width:170px;height:170px;
+  background:linear-gradient(145deg,#fff,#f7d7e4);
+  border:3px solid #dfa1b5;
+  border-radius:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  cursor:pointer;
+  transition:.4s;
 }
-/* cover */
-.cover{
-  position:absolute;
-  left:0;top:0;width:100%;height:100%;
-  background:#e8bccd;
-  border-radius:8px;
-  transform-origin:left;
-  transform:rotateY(0deg);
-  transition:transform 1.3s ease-in-out;
-}
-/* left spine appearance */
-.notebook::before{
-  content:'';position:absolute;left:-6px;top:0;width:6px;height:100%;
-  background:#b67b9e;border-right:1px solid #a26689;
-  border-top-left-radius:6px;border-bottom-left-radius:6px;
-}
+.box:hover{transform:scale(1.07);}
+.box span{font-size:1.4rem;color:#7a1b5a;margin-top:8px;font-weight:bold;}
 
-/* inside page */
-.page{
-  width:94%;height:90%;margin:3%;
-  background:white;
-  box-shadow:inset 0 0 10px rgba(0,0,0,0.1);
-  border-radius:6px;
-  padding:25px;
-  line-height:1.8;
-  color:#4b154b;
-  opacity:0;overflow:auto;
-  transform:translateY(40px);
+/* ------- GIFT 2 - ENVELOPE + LETTER ------- */
+.envelope{
+  width:280px;height:180px;background:#fbe4ea;border:2px solid #dfa1b5;
+  border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  position:relative;overflow:hidden;
+  transition:transform 1.4s ease,bottom 1.4s ease;
+}
+.envelope::before{
+  content:"";position:absolute;width:100%;height:100%;
+  background:#f3cbd7;
+  clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%);
+  transition:transform 1.2s ease;transform-origin:top;
+}
+.envelope.open::before{transform:rotateX(180deg);}
+.envelope.moveUp{transform:translateY(-120px);}
+.letter-paper{
+  opacity:0;background:#fff;border:1.5px solid #dfa1b5;border-radius:10px;
+  margin-top:18px;width:340px;max-width:90vw;padding:30px 25px;
+  text-align:left;line-height:1.8;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  transform:translateY(25px);
   transition:all 1s ease-in-out;
+}
+.letter-paper.show{opacity:1;transform:translateY(0);}
+.letter-text{overflow:hidden;border-right:2px solid #7a1b5a;white-space:nowrap;width:0;}
+.typed{animation:typing 6s steps(80,end) forwards,blink 1s infinite;}
+@keyframes typing{from{width:0;}to{width:100%;}}
+@keyframes blink{50%{border-color:transparent;}}
+
+/* ------- GIFT 3 - NOTEBOOK ------- */
+.notebook{
+  width:320px;height:230px;background:#f6d0df;border:3px solid #ce9fb3;
+  border-radius:10px;position:relative;
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  overflow:hidden;perspective:1200px;
+  transition:transform 1s ease-in-out,margin-top 1s ease;
+}
+.notebook::before{
+  content:"";position:absolute;left:-6px;top:0;width:6px;height:100%;
+  background:#b77f9b;border-right:1px solid #a26689;border-radius:6px 0 0 6px;
+}
+.cover{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:#e8bccd;border-radius:10px;
+  transform-origin:left;transform:rotateY(0deg);
+  transition:transform 1s ease-in-out;
+}
+.page{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:#fffdfd;border-radius:7px;
+  box-shadow:inset 0 0 10px rgba(0,0,0,0.1);
+  padding:25px;line-height:1.8;text-align:left;overflow:auto;
+  opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease;
 }
 .notebook.open{margin-top:-40px;}
 .notebook.open .cover{transform:rotateY(-140deg);}
 .notebook.open .page{opacity:1;transform:translateY(0);}
-
-/* Typed effect inside page */
-.page p{
-  overflow:hidden;
-  border-right:2px solid #7a1b5a;
-  white-space:nowrap;
-  width:0;
-  animation:
-    typing 6s steps(60,end) forwards,
-    blink 1s infinite;
-}
-@keyframes typing{from{width:0;}to{width:100%;}}
-@keyframes blink{50%{border-color:transparent;}}
-
+.page p{overflow:hidden;border-right:2px solid #7a1b5a;white-space:nowrap;width:0;}
+.page .typed{animation:typing 6s steps(80,end) forwards,blink 1s infinite;}
 </style>
 </head>
+
 <body>
 
-<h3>Gift 3 – My Promise 💖</h3>
+<!-- Scenes -->
+<div id="scene1" class="scene active">
+  <h1>Salam Meri Jan ❤️</h1>
+  <button onclick="nextScene(2)">Next ➜</button>
+</div>
 
-<div class="notebook" id="notebook">
-  <div class="cover"></div>
-  <div class="page" id="page">
-    <p>
-      I don’t have enough to gift you on this beautiful moment, but I promise I will gift you انشاءاللہ, and you will be happy. 
-      You are my happiness, my peace, and my most precious prayer come true. 🌸  
-    </p>
+<div id="scene2" class="scene">
+  <h1>Kia haal hain Shezadiii 😊</h1>
+  <button onclick="nextScene(3)">Next ➜</button>
+</div>
+
+<div id="scene3" class="scene">
+  <h1>Will You Be Mine Azu ?</h1>
+  <p>Life is an incredible journey and I want to spend every moment with you.</p>
+  <div>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+  <div id="arrow" class="arrow" style="display:none;">👉 Please click Yes ❤️</div>
+</div>
+
+<div id="scene4" class="scene">
+  <h1>Happy Valentine’s Day Meri Jan 💖</h1>
+  <button onclick="nextScene(5)">Next ➜</button>
+</div>
+
+<div id="scene5" class="scene">
+  <h1>There is Something for You Meri Jan 💌</h1>
+  <button onclick="nextScene(6)">Ajao Meri Jan 💞</button>
+</div>
+
+<div id="scene6" class="scene">
+  <h1>Open Your Gifts 🎁</h1>
+  <div class="gift-boxes">
+    <div class="box" onclick="openGift(1)"><span>Gift 1</span></div>
+    <div class="box" onclick="openGift(2)"><span>Gift 2</span></div>
+    <div class="box" onclick="openGift(3)"><span>Gift 3</span></div>
   </div>
 </div>
 
-<button id="openBtn">Open Notebook 📖</button>
-<button onclick="alert('Back to Gifts – (Integrate with Scene 6)')">⬅ Back to Gifts</button>
+<!-- GIFT 1 Placeholder: -->
+<div id="gift1" class="scene">
+  <h2>Gift 1 coming soon 💫</h2>
+  <button onclick="nextScene(6)">⬅ Back to Gifts</button>
+</div>
 
+<!-- GIFT 2 -->
+<div id="gift2" class="scene">
+  <div class="envelope" id="envelope"></div>
+  <div id="letter" class="letter-paper">
+    <h2>I Love You ❤️</h2>
+    <p class="letter-text" id="letterText">
+      When I say I love you more, I don’t just mean I love you more than you love me. 
+      I mean I love you more than the bad days ahead of us. I love you more than any fight we will ever have. 
+      I love you more than the distance between us. I love you more than any obstacle that could come between us. 
+      Because at the end of the day, you’re the person I want to come home to — 
+      the one I want to share my happiness, sadness and everything with. 
+      My eyes will always adore you. You are my home, my heart, my forever Azu 💞
+    </p>
+  </div>
+  <div>
+    <button onclick="openGift(3)">Next Gift ➜</button>
+    <button onclick="nextScene(6)">⬅ Back to Gifts</button>
+  </div>
+</div>
+
+<!-- GIFT 3 -->
+<div id="gift3" class="scene">
+  <h2>Gift 3 – My Promise Notebook 💖</h2>
+  <div class="notebook" id="notebook">
+    <div class="cover"></div>
+    <div class="page" id="page">
+      <p id="noteText">
+        I don’t have enough to gift you on this beautiful moment, but I promise I will gift you <b>انشاءاللہ</b>, and you will be happy. 
+        You are my happiness, my peace, and my most precious prayer come true. 🌸
+      </p>
+    </div>
+  </div>
+  <div>
+    <button id="openBtn">Open Notebook 📖</button>
+    <button onclick="nextScene(6)">⬅ Back to Gifts</button>
+  </div>
+</div>
+
+<!-- ---------- JavaScript ---------- -->
 <script>
+const scenes=document.querySelectorAll('.scene');
+function nextScene(n){scenes.forEach(s=>s.classList.remove('active'));document.getElementById('scene'+n).classList.add('active');}
+
+// YES / NO logic
+const yes=document.getElementById('yesBtn'),
+      no=document.getElementById('noBtn'),
+      arrow=document.getElementById('arrow');
+yes.addEventListener('click',()=>nextScene(4));
+no.addEventListener('click',()=>{
+  arrow.style.display='block';
+  const x=Math.random()*(window.innerWidth-150);
+  const y=Math.random()*(window.innerHeight-150);
+  no.style.position='absolute';
+  no.style.left=x+'px';no.style.top=y+'px';
+});
+
+// GIFT Navigation
+function openGift(n){
+  scenes.forEach(s=>s.classList.remove('active'));
+  document.getElementById('gift'+n).classList.add('active');
+  if(n===2) startEnvelope();
+  if(n===3) resetNotebook();
+}
+
+/* ------- Gift 2 Animation ------- */
+function startEnvelope(){
+  const env=document.getElementById('envelope');
+  const letter=document.getElementById('letter');
+  const text=document.getElementById('letterText');
+  text.classList.remove('typed');
+  text.style.width='0';
+  env.classList.add('moveUp');
+  setTimeout(()=>env.classList.add('open'),700);
+  setTimeout(()=>{
+    letter.classList.add('show');
+    text.classList.add('typed');
+  },2000);
+}
+
+/* ------- Gift 3 Animation ------- */
 const notebook=document.getElementById('notebook');
 const openBtn=document.getElementById('openBtn');
-const pageText=document.querySelector('#page p');
-let opened=false;
+const noteText=document.getElementById('noteText');
+let openState=false;
 
+function resetNotebook(){
+  notebook.classList.remove('open');
+  noteText.classList.remove('typed');
+  noteText.style.width='0';
+  openState=false;
+}
 openBtn.addEventListener('click',()=>{
-  opened=!opened;
-  if(opened){
+  if(!openState){
+    openState=true;
     notebook.classList.add('open');
-    // restart text animation after cover opens
-    pageText.style.animation='none';
-    void pageText.offsetWidth;
-    pageText.style.animation='typing 6s steps(60,end) forwards, blink 1s infinite';
+    noteText.classList.remove('typed');
+    noteText.style.width='0';
+    void noteText.offsetWidth;
+    setTimeout(()=>noteText.classList.add('typed'),800);
   }else{
+    openState=false;
     notebook.classList.remove('open');
+    noteText.classList.remove('typed');
+    noteText.style.width='0';
   }
 });
 </script>
